@@ -1,0 +1,96 @@
+<!-- 🔥 TU HTML ORIGINAL COMPLETO TAL CUAL 🔥 -->
+
+<section class="grid">
+
+  <!-- FORMULARIO -->
+  <div class="card form-card">
+    <h2>{{ editando ? '✏️ Editar Objeto' : '🧾 Registrar Nuevo Objeto' }}</h2>
+    <p class="muted">Agrega un objeto encontrado al sistema</p>
+
+    <form (submit)="registrarObjeto(); $event.preventDefault()">
+      <label>Nombre del objeto</label>
+      <input type="text" [(ngModel)]="objeto.nombre" name="nombre" required />
+
+      <label>Descripción</label>
+      <textarea rows="3" [(ngModel)]="objeto.descripcion" name="descripcion"></textarea>
+
+      <label>Lugar encontrado</label>
+      <input type="text" [(ngModel)]="objeto.lugarEncontrado" name="lugarEncontrado" />
+
+      <label>Fecha</label>
+      <input type="date" [(ngModel)]="objeto.fecha" name="fecha" />
+
+      <label>Categoría</label>
+      <select [(ngModel)]="objeto.categoria" name="categoria">
+        <option value="TECNOLOGIA">Tecnologia</option>
+        <option value="DOCUMENTO">Documento</option>
+        <option value="ROPA">Ropa</option>
+        <option value="ACCESORIO">Accesorio</option>
+        <option value="MOCHILA">Mochila</option>
+        <option value="OTRO">Otro</option>
+      </select>
+
+      <label>Fotos del objeto</label>
+      <div class="upload-box" (click)="fileInput.click()">
+        <input #fileInput type="file" (change)="onFilesSelected($event)" multiple accept="image/*" hidden />
+        <div class="upload-content">
+          <i class="upload-icon">📤</i>
+          <p>Click para subir fotos</p>
+          <span *ngIf="imagenesSeleccionadas.length > 0" class="upload-count">
+            {{ imagenesSeleccionadas.length }} imagen(es) seleccionada(s)
+          </span>
+        </div>
+      </div>
+
+      <div class="preview" *ngIf="imagenesPreview.length > 0">
+        <img *ngFor="let img of imagenesPreview" [src]="img" />
+      </div>
+
+      <div style="margin-top:15px;">
+        <button type="submit" class="btn btn-primary full">
+          {{ editando ? '💾 Guardar cambios' : '💾 Guardar objeto' }}
+        </button>
+
+        <button *ngIf="editando" type="button" class="btn btn-secondary full cancel-btn" (click)="resetForm()">
+          ❌ Cancelar edición
+        </button>
+      </div>
+    </form>
+  </div>
+
+  <!-- LISTA DE OBJETOS -->
+  <div class="card list-card">
+    <h2>📋 Objetos Activos</h2>
+    <p class="muted">Objetos disponibles para ser reclamados</p>
+
+    <div *ngFor="let o of objetos" class="object-card">
+      <div>
+        <h3>{{ o.nombre }}</h3>
+        <p>{{ o.descripcion }}</p>
+
+        <div class="tags">
+          <span class="tag">📍 {{ o.lugarEncontrado }}</span>
+          <span class="tag">📅 {{ o.fecha }}</span>
+          <span class="tag categoria">{{ o.categoria }}</span>
+        </div>
+        <div class="imagenes-grid-scroll">
+          <img *ngFor="let foto of o.fotos"
+               [src]="'http://localhost:8080/uploads/' + foto"
+               class="img-item" />
+        </div>
+
+
+      </div>
+
+      <div class="object-footer">
+        <span class="status" [ngClass]="{ 'active': o.estado === 'ACTIVO' }">{{ o.estado }}</span>
+        <button class="btn-edit" (click)="editar(o)"><i>✏️</i> Editar</button>
+      </div>
+    </div>
+
+    <div *ngIf="objetos.length === 0" class="no-data">
+      <p>🚫 No hay objetos registrados todavía.</p>
+    </div>
+  </div>
+
+</section>

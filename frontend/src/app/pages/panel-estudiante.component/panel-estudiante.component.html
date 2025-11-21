@@ -1,0 +1,55 @@
+<!-- ===== NAVBAR ===== -->
+<nav class="navbar">
+  <div class="navbar-left">
+    <div class="logo-container">
+      <img src="https://cdn-icons-png.flaticon.com/512/3364/3364050.png" alt="logo" />
+      <div class="title">
+        <h1>Portal Estudiante</h1>
+        <p>UPEU - Objetos Perdidos</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="navbar-right">
+    <div class="user">
+      <span class="user-name">
+        <i class="bi bi-person-fill"></i> 👤 {{ usuario.nombre }}
+      </span>
+    </div>
+    <button class="btn-salir" (click)="cerrarSesion()">
+      <i class="bi bi-power"></i> Salir
+    </button>
+  </div>
+</nav>
+
+<!-- ===== CONTENIDO PRINCIPAL ===== -->
+<section class="main-content">
+
+  <!-- ===== SUBNAV (Tabs con RUTAS) ===== -->
+  <div class="subnav">
+    <button class="subnav-btn" routerLink="buscarobjeto" routerLinkActive="active">
+      🔍 <span>Buscar Objeto</span>
+    </button>
+
+    <button class="subnav-btn" routerLink="misSolicitudes" routerLinkActive="active">
+      📄 <span>Mis Solicitudes</span>
+    </button>
+
+    <button class="subnav-btn" routerLink="perfil" routerLinkActive="active">
+      👤 <span>Perfil</span>
+    </button>
+  </div>
+
+  <!-- ===== MODAL DE NOTIFICACIÓN ===== -->
+  <div class="modal-backdrop" *ngIf="mostrarModal"></div>
+
+  <div class="modal-notificacion" *ngIf="mostrarModal">
+    <h2 class="titulo-notificacion">Notificación</h2>
+    <p class="mensaje-notificacion">{{ notificacion.mensaje }}</p>
+    <button class="btn-ok" (click)="cerrar()">OK</button>
+  </div>
+
+  <!-- Aquí se cargan las vistas hijas -->
+  <router-outlet></router-outlet>
+
+</section>

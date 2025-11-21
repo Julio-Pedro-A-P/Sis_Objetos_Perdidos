@@ -1,0 +1,64 @@
+<!-- TOPBAR -->
+<div class="panel-container">
+
+<header class="topbar">
+
+  <div class="brand">
+    <div class="logo">📦</div>
+    <div class="titles">
+      <h1>Panel Administrador</h1>
+      <span>UPEU – Gestión de Objetos Perdidos</span>
+    </div>
+  </div>
+
+  <div class="user-info">
+    <div class="badge">AD</div>
+    <span>{{ usuario.nombre }}</span>
+    <button class="btn-logout" (click)="cerrarSesion()">Salir</button>
+  </div>
+</header>
+  <div class="topbar-spacer"></div>
+
+  <div class="kpi-wrapper">
+
+    <div class="kpi-card">
+      <div class="kpi-icon">📦</div>
+      <h2>{{ objetosActivos }}</h2>
+      <span>Objetos activos</span>
+    </div>
+
+
+    <div class="kpi-card">
+      <span class="kpi-icon">⚠️</span>
+      <h2>{{ kpi.pendientes }}</h2>
+      <p>Pendientes</p>
+    </div>
+
+
+    <div class="kpi-card">
+      <span class="kpi-icon">✔️</span>
+      <h2>{{ kpi.entregados }}</h2>
+      <p>Entregados</p>
+    </div>
+
+
+    <div class="kpi-card">
+      <span class="kpi-icon">👥</span>
+      <h2>{{ kpi.usuarios }}</h2>
+      <p>Usuarios</p>
+    </div>
+
+  </div>
+
+<!-- TABS -->
+<nav class="tabs">
+  <button class="tab" routerLink="registrar" routerLinkActive="active">📝 Registrar</button>
+  <button class="tab" routerLink="validar" routerLinkActive="active">📋 Validar ({{ kpi.pendientes }})</button>
+  <button class="tab" routerLink="historial" routerLinkActive="active">🕓 Historial</button>
+  <button class="tab" routerLink="usuarios" routerLinkActive="active">👤 Usuarios</button>
+</nav>
+
+
+<!-- AQUI CARGAN LAS VISTAS -->
+<router-outlet></router-outlet>
+</div>

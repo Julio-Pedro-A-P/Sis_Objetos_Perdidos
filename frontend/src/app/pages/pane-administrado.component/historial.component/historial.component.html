@@ -1,0 +1,54 @@
+<div class="contenedor-historial">
+
+  <h2 class="titulo">Historial de Validaciones</h2>
+  <p class="subtitulo">Registro de solicitudes aprobadas o rechazadas</p>
+
+  <!-- BUSCADOR -->
+  <div class="buscador">
+    <input
+      type="text"
+      class="input-buscar"
+      placeholder="Buscar por objeto, estudiante o código..."
+      [(ngModel)]="filtro"
+      (input)="filtrar()"
+    />
+  </div>
+
+  <!-- TABLA -->
+  <table class="tabla">
+    <thead>
+    <tr>
+      <th>Objeto</th>
+      <th>Estudiante</th>
+      <th>Código</th>
+      <th>Fecha solicitud</th>
+      <th>Estado</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr *ngFor="let h of historialFiltrado">
+      <td>{{ h.objeto.nombre }}</td>
+      <td>{{ h.estudiante.nombres }}</td>
+      <td>{{ h.estudiante.codigo }}</td>
+      <td>{{ h.fechaPerdida }}</td>
+      <td class="col-estado">
+  <span
+    class="pill-estado pill-aprobada"
+    *ngIf="h.estado === 'APROBADA'">
+    ✔ Aprobada
+  </span>
+
+        <span
+          class="pill-estado pill-rechazada"
+          *ngIf="h.estado === 'RECHAZADA'">
+    ✖ Rechazada
+  </span>
+      </td>
+
+
+    </tr>
+    </tbody>
+  </table>
+
+</div>

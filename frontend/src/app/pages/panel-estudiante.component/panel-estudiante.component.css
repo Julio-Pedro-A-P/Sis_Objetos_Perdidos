@@ -1,0 +1,179 @@
+/* ============================================================
+   🔷 NAVBAR INSTITUCIONAL
+============================================================ */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #0b1e3c;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 60px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo-container img {
+  width: 40px;
+  height: 40px;
+  background-color: #d4ad07;
+  border-radius: 8px;
+  padding: 6px;
+}
+
+.title h1 {
+  font-size: 16px;
+  margin: 0;
+  font-weight: bold;
+}
+
+.title p {
+  font-size: 12px;
+  color: #d4ad07;
+  margin: 0;
+}
+
+/* ===== USER Y BOTÓN SALIR ===== */
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.user-name {
+  background-color: #132d58;
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.btn-salir {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background-color: #d4ad07;
+  color: #0b1e3c;
+  border: none;
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 13px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.btn-salir:hover {
+  background-color: #b89205;
+  color: white;
+}
+
+/* ============================================================
+   🔷 CONTENIDO PRINCIPAL
+============================================================ */
+.main-content {
+  background-color: #f5f6fa;
+  padding: 120px 60px 60px;
+}
+
+/* ============================================================
+   🔷 SUBNAV
+============================================================ */
+.subnav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+  background-color: #ffffff;
+  border-radius: 14px;
+  padding: 14px 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  margin-bottom: 25px;
+}
+
+.subnav-btn {
+  border: none;
+  background: none;
+  color: #0b1e3c;
+  font-weight: 600;
+  font-size: 14px;
+  padding: 10px 45px;
+  border-radius: 50px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.2s ease;
+}
+
+.subnav-btn:hover,
+.subnav-btn.active {
+  background-color: #0b1e3c;
+  color: #fff;
+}
+/* Fondo difuminado */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  backdrop-filter: blur(4px);
+  z-index: 999;
+}
+
+/* Modal centrado */
+.modal-notificacion {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+  background: #fff;
+  padding: 30px 40px;
+  width: 420px;
+  max-width: 90%;
+  border-radius: 16px;
+  text-align: center;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+}
+
+.titulo-notificacion {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 12px;
+  color: #002e6d;
+}
+
+.mensaje-notificacion {
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.btn-ok {
+  background: #002e6d;
+  color: #fff;
+  border: none;
+  padding: 10px 22px;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.btn-ok:hover {
+  background: #013a8a;
+}
+

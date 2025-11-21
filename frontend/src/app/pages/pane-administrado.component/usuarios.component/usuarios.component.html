@@ -1,0 +1,35 @@
+<div class="contenedor">
+
+  <h2>Listado de Estudiantes</h2>
+  <p>Usuarios registrados en el sistema</p>
+
+  <input
+    type="text"
+    placeholder="Buscar por nombre, correo o código..."
+    [(ngModel)]="filtro"
+    class="input-buscar"
+  />
+
+  <table class="tabla">
+    <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Código</th>
+      <th>Correo</th>
+      <th>Facultad</th>
+      <th>Teléfono</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr *ngFor="let est of filtrarEstudiantes()">
+      <td>{{ est.nombres }}</td>
+      <td>{{ est.codigo }}</td>
+      <td>{{ est.correoInstitucional }}</td>
+      <td>{{ est.estudiante?.facultad }}</td>
+      <td>{{ est.estudiante?.telefono }}</td>
+    </tr>
+    </tbody>
+  </table>
+
+</div>

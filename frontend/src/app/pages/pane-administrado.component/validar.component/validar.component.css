@@ -1,0 +1,146 @@
+.contenedor {
+  width: 90%;
+  margin: auto;
+}
+
+.titulo {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #0c2440;
+}
+
+.subtitulo {
+  color: #666;
+  margin-bottom: 20px;
+  font-size: 15px;
+}
+
+/* ===================================================== */
+/* 🔵 CARD SOLICITUD */
+/* ===================================================== */
+
+.card-solicitud {
+  background: white;
+  border-radius: 12px;
+  padding: 18px;
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  border-left: 6px solid #d4ad07;
+}
+
+.card-solicitud h3 {
+  margin: 0;
+  color: #0c2440;
+}
+
+.badge-pendiente {
+  display: inline-block;
+  background: #f7c948;
+  color: #5f4c00;
+  padding: 4px 10px;
+  border-radius: 8px;
+  font-size: 12px;
+  margin-bottom: 5px;
+}
+
+.btn-revisar {
+  background: #0c2440;
+  color: white;
+  padding: 8px 14px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: .2s;
+}
+
+.btn-revisar:hover {
+  opacity: 0.8;
+}
+
+/* ===================================================== */
+/* 🔵 MODAL */
+/* ===================================================== */
+
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  backdrop-filter: blur(3px);
+  background: rgba(0,0,0,0.45);
+  z-index: 10;
+}
+
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 550px;
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  z-index: 20;
+  animation: pop .2s ease-out;
+}
+
+@keyframes pop {
+  from { transform: translate(-50%, -50%) scale(.9); opacity: 0; }
+  to { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.close {
+  font-size: 22px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.modal-body .fila {
+  margin-bottom: 12px;
+}
+
+.campo {
+  padding: 8px;
+  background: #f3f4f6;
+  border-radius: 8px;
+  margin-top: 5px;
+}
+
+/* Footer Buttons */
+.modal-footer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.btn-rechazar {
+  background: #ff4d4d;
+  color: white;
+  border: none;
+  padding: 10px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.btn-aprobar {
+  background: #2ecc71;
+  color: white;
+  border: none;
+  padding: 10px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.btn-rechazar:hover,
+.btn-aprobar:hover {
+  opacity: 0.85;
+}

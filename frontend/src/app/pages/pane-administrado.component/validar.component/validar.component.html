@@ -1,0 +1,86 @@
+<div class="contenedor">
+
+  <h2 class="titulo">Solicitudes Pendientes</h2>
+  <p class="subtitulo">Valida las solicitudes de los estudiantes</p>
+
+  <!-- LISTA DE SOLICITUDES -->
+  <div *ngFor="let s of solicitudes" class="card-solicitud">
+
+    <div class="info">
+
+      <h3>{{ s.objeto.nombre }}</h3>
+
+      <span class="badge-pendiente">Pendiente</span>
+
+      <p><strong>Nombres :</strong> {{ s.estudiante.nombres }}<p><strong>Codigo:</strong> ({{ s.estudiante.codigo }})</p>
+      <p><strong>Teléfono:</strong> {{ s.estudiante.telefono }}</p>
+      <p><strong>Facultad:</strong> {{ s.estudiante.facultad }}</p>
+      <p><strong>Fecha de solicitud:</strong> {{ s.fechaPerdida }}</p>
+      <p><strong>Ubicación reportada:</strong> {{ s.lugarPerdida }}</p>
+    </div>
+
+    <button class="btn-revisar" (click)="abrirModal(s)">Revisar</button>
+  </div>
+
+
+  <!-- MODAL -->
+  <div class="modal-backdrop" *ngIf="modalAbierto"></div>
+
+  <div class="modal" *ngIf="modalAbierto">
+
+    <div class="modal-header">
+      <h3>Validar Solicitud</h3>
+      <button class="close" (click)="cerrarModal()">×</button>
+    </div>
+
+    <div class="modal-body">
+
+      <div class="fila">
+        <strong>Objeto solicitado:</strong> {{ solicitudSeleccionada.objeto.nombre }}
+      </div>
+
+      <div class="fila">
+        <strong>Nombre estudiante:</strong>
+        <div class="campo">{{ solicitudSeleccionada.estudiante.nombres }}</div>
+      </div>
+
+      <div class="fila">
+        <strong>Código:</strong>
+        <div class="campo">{{ solicitudSeleccionada.estudiante.codigo }}</div>
+      </div>
+
+      <div class="fila">
+        <strong>Teléfono:</strong>
+        <div class="campo">{{ solicitudSeleccionada.estudiante.telefono }}</div>
+      </div>
+
+      <div class="fila">
+        <strong>Facultad:</strong>
+        <div class="campo">{{ solicitudSeleccionada.estudiante.facultad }}</div>
+      </div>
+
+      <div class="fila">
+        <strong>¿Dónde lo perdió?</strong>
+        <div class="campo">{{ solicitudSeleccionada.lugarPerdida }}</div>
+      </div>
+
+      <div class="fila">
+        <strong>Color o marca:</strong>
+        <div class="campo">{{ solicitudSeleccionada.colorMarca }}</div>
+      </div>
+
+      <div class="fila">
+        <strong>Detalles adicionales:</strong>
+        <div class="campo">{{ solicitudSeleccionada.detalles }}</div>
+      </div>
+
+    </div>
+
+    <div class="modal-footer">
+      <button class="btn-rechazar" (click)="rechazarSolicitud(solicitudSeleccionada.id)">Rechazar</button>
+      <button class="btn-aprobar" (click)="aprobarSolicitud(solicitudSeleccionada.id)">Validar y aprobar</button>
+    </div>
+
+  </div>
+
+</div>

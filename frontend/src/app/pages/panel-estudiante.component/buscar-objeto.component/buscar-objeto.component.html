@@ -1,0 +1,234 @@
+<div class="search-section">
+
+  <h2>Buscar Objeto Perdido</h2>
+  <p class="subtext">Encuentra tus pertenencias en nuestra base de datos</p>
+
+  <!-- BUSCADOR -->
+  <div class="search-bar">
+    <i class="bi bi-search search-icon"></i>
+    <input
+      type="text"
+      [(ngModel)]="textoBusqueda"
+      (input)="filtrarResultados()"
+      placeholder="Buscar por nombre o categoría…"
+    />
+  </div>
+
+  <!-- FILTROS -->
+  <div class="filters">
+
+    <button class="filter" [ngClass]="{ active: categoriaSeleccionada === 'TODOS' }"
+            (click)="filtrarPorCategoria('TODOS')">Todos</button>
+
+    <button class="filter" [ngClass]="{ active: categoriaSeleccionada === 'TECNOLOGIA' }"
+            (click)="filtrarPorCategoria('TECNOLOGIA')">Tecnología</button>
+
+    <button class="filter" [ngClass]="{ active: categoriaSeleccionada === 'DOCUMENTO' }"
+            (click)="filtrarPorCategoria('DOCUMENTO')">Documentos</button>
+
+    <button class="filter" [ngClass]="{ active: categoriaSeleccionada === 'ROPA' }"
+            (click)="filtrarPorCategoria('ROPA')">Ropa</button>
+
+    <button class="filter" [ngClass]="{ active: categoriaSeleccionada === 'ACCESORIO' }"
+            (click)="filtrarPorCategoria('ACCESORIO')">Accesorios</button>
+
+    <button class="filter" [ngClass]="{ active: categoriaSeleccionada === 'MOCHILA' }"
+            (click)="filtrarPorCategoria('MOCHILA')">Mochilas</button>
+
+    <button class="filter" [ngClass]="{ active: categoriaSeleccionada === 'OTRO' }"
+            (click)="filtrarPorCategoria('OTRO')">Otros</button>
+
+  </div>
+
+</div>
+
+<!-- =================== CARDS =================== -->
+<div class="container-objetos">
+  <div class="grid-objetos">
+
+    <div class="card-objeto" *ngFor="let obj of objetosFiltrados">
+
+      <!-- Imagen -->
+      <div class="img-wrapper" (click)="abrirModal(obj)">
+        <img
+          [src]="obj.fotos?.length > 0
+            ? 'http://localhost:8080/uploads/' + obj.fotos[0].url
+            : 'assets/img/no-image.png'"
+          alt="{{ obj.nombre }}"
+        />
+      </div>
+
+      <!-- Información -->
+      <div class="card-body">
+
+        <div class="card-header">
+          <h3 class="nombre">{{ obj.nombre }}</h3>
+          <span class="categoria-pill">{{ obj.categoria }}</span>
+        </div>
+
+        <p class="descripcion">{{ obj.descripcion }}</p>
+
+        <div class="icon-line">
+          <span class="icon">📍</span>
+          <span>{{ obj.lugarEncontrado }}</span>
+        </div>
+
+        <div class="icon-line">
+          <span class="icon">📅</span>
+          <span>{{ obj.fecha }}</span>
+        </div>
+
+        <!-- BOTÓN RECLAMAR -->
+        <button class="btn-reclamar" (click)="abrirReclamo(obj)">
+          Reclamar
+        </button>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ============================================================
+                     MODAL 1 — CARRUSEL DE IMÁGENES
+============================================================ -->
+<div class="modal-overlay" *ngIf="modalVisible" (click)="cerrarModal()">
+
+  <div class="modal-contenido" (click)="$event.stopPropagation()">
+
+    <span class="cerrar" (click)="cerrarModal()">&times;</span>
+
+    <div class="carrusel" *ngIf="objetoSeleccionado?.fotos?.length">
+
+      <button class="carrusel-btn prev" (click)="cambiarImagen(-1)">&#10094;</button>
+
+      <img
+        [src]="'http://localhost:8080/uploads/' + objetoSeleccionado.fotos[imagenActual].url"
+        class="imagen-carrusel"
+        alt="Imagen del objeto"
+      />
+
+      <button class="carrusel-btn next" (click)="cambiarImagen(1)">&#10095;</button>
+
+    </div>
+
+    <div class="info-modal">
+      <h2>{{ objetoSeleccionado?.nombre }}</h2>
+      <p>{{ objetoSeleccionado?.descripcion }}</p>
+      <p><strong>Lugar:</strong> {{ objetoSeleccionado?.lugarEncontrado }}</p>
+      <p><strong>Fecha:</strong> {{ objetoSeleccionado?.fecha }}</p>
+      <p><strong>Categoría:</strong> {{ objetoSeleccionado?.categoria }}</p>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ============================================================
+                     MODAL 2 — FORMULARIO DE RECLAMO
+============================================================ -->
+<div class="modal-overlay" *ngIf="modalReclamoVisible" (click)="cerrarModalReclamo()">
+
+  <div class="modal-contenido" (click)="$event.stopPropagation()">
+
+    <span class="cerrar" (click)="cerrarModalReclamo()">&times;</span>
+
+    <h2>Solicitar Validación</h2>
+    <p class="subtext">Responde las siguientes preguntas para validar que el artículo es tuyo.</p>
+
+    <div class="info-objeto-reclamo">
+      <p><strong>Objeto:</strong> {{ objetoSeleccionado?.nombre }}</p>
+      <p><strong>Descripción:</strong> {{ objetoSeleccionado?.descripcion }}</p>
+    </div>
+
+    <form (ngSubmit)="enviarReclamo()">
+
+      <!-- FECHA -->
+      <div class="form-group">
+        <label>Fecha aproximada en que lo perdiste</label>
+        <input type="date" name="fechaPerdida" [(ngModel)]="fechaPerdida" required />
+      </div>
+
+      <!-- LUGAR -->
+      <div class="form-group">
+        <label>¿Dónde perdiste el objeto?</label>
+        <input type="text" name="lugarPerdida" [(ngModel)]="lugarPerdida" required />
+      </div>
+
+      <!-- MARCA / COLOR -->
+      <div class="form-group">
+        <label>Color o marca específica</label>
+        <input type="text" name="colorMarca" [(ngModel)]="colorMarca" required />
+      </div>
+
+      <!-- DETALLES -->
+      <div class="form-group">
+        <label>Detalles o accesorios adicionales</label>
+        <textarea name="detalles" [(ngModel)]="detalles" rows="3" required></textarea>
+      </div>
+
+      <!-- ===================== DATOS DEL ESTUDIANTE ===================== -->
+      <div *ngIf="esPrimerRegistro" class="primer-registro-box">
+
+        <h4 class="section-title">Completa tus datos antes de continuar</h4>
+
+        <div class="fila-datos">
+
+          <!-- FACULTAD -->
+          <div class="campo">
+            <label class="label">Facultad</label>
+            <input
+              type="text"
+              class="input"
+              placeholder="Ingresa tu facultad"
+              [(ngModel)]="facultad"
+              name="facultad"
+            />
+          </div>
+
+          <!-- TELÉFONO -->
+          <div class="campo">
+            <label class="label">Teléfono</label>
+            <input
+              type="text"
+              class="input"
+              placeholder="Ingresa tu número de celular"
+              [(ngModel)]="telefono"
+              name="telefono"
+            />
+          </div>
+
+        </div>
+
+        <hr class="separador" />
+      </div>
+
+      <!-- MENSAJES -->
+      <p class="mensaje-exito" *ngIf="mensajeExito">{{ mensajeExito }}</p>
+      <p class="mensaje-error" *ngIf="mensajeError">{{ mensajeError }}</p>
+
+      <!-- BOTONES -->
+      <div class="acciones-reclamo">
+        <button type="button" class="btn-cancelar" (click)="cerrarModalReclamo()">Cancelar</button>
+        <button type="submit" class="btn-enviar" [disabled]="enviando">
+          {{ enviando ? 'Enviando...' : 'Enviar solicitud' }}
+        </button>
+      </div>
+
+    </form>
+
+  </div>
+</div>
+
+
+<!-- ============================================================
+                     POPUP DE ÉXITO
+============================================================ -->
+<div class="popup-exito" *ngIf="mostrarExito">
+  <div class="popup-box">
+    <h3>✔ Solicitud enviada</h3>
+    <p>Tu solicitud fue enviada correctamente.</p>
+    <button (click)="cerrarPopupExito()">OK</button>
+  </div>
+</div>

@@ -1,0 +1,44 @@
+
+
+<section class="login-container">
+  <div class="login-left">
+    <div class="login-logo-box">🛡️</div>
+    <h2 class="login-title">UPEU</h2>
+    <p class="login-subtitle">Sistema de Objetos Perdidos </p>
+    <p class="login-subtitle">(Panel administrativo) </p>
+    <p class="login-desc">
+      Acceso exclusivo para personal de almacén autorizado
+    </p>
+  </div>
+
+  <div class="login-right">
+    <div class="login-box">
+      <div class="back-button-inline">
+        <a routerLink="/" class="back-link-inline">← Volver al inicio</a>
+      </div>
+
+      <div class="login-card">
+        <div class="tab-header">
+          <button class="tab active">🧑‍💼 Administrador</button>
+        </div>
+
+        <div class="login-body">
+          <h3>Acceso de Administrador</h3>
+          <p class="login-text">Acceso exclusivo para personal de almacén</p>
+
+          <label>Correo Insitiyucional</label>
+          <input type="text"placeholder="Correo institucional" [(ngModel)]="correoInstitucional"/>
+
+          <label>Contraseña</label>
+          <label>Contraseña</label><input type="password" placeholder="Contraseña" [(ngModel)]="contrasena"/>
+
+          <div class="alert-box">
+            🔒 Acceso restringido solo para personal autorizado
+          </div>
+
+          <button class="btn-login" (click)="iniciarSesionAdmin()" >Iniciar sesión como administrador</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

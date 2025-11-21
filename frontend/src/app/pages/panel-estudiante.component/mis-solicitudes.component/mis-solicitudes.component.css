@@ -1,0 +1,73 @@
+.contenedor-solicitudes {
+  padding: 20px;
+}
+
+.no-solicitudes {
+  font-size: 18px;
+  color: #555;
+  margin-top: 20px;
+}
+
+.solicitud-card {
+  background: #ffffff;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  border-left: 6px solid #0c2440;
+}
+
+.sol-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.estado {
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.estado.pendiente {
+  background: #ffe08a;
+  color: #8a6d00;
+}
+
+.estado.validado {
+  background: #b2ffb2;
+  color: #006600;
+}
+
+.estado.rechazado {
+  background: #ffb3b3;
+  color: #b30000;
+}
+
+.fotos {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.fotos img {
+  width: 110px;
+  height: 110px;
+  object-fit: cover;
+  border-radius: 10px;
+  border: 2px solid #ddd;
+}
+
+.respuesta-admin {
+  margin-top: 15px;
+  padding: 10px;
+  background: #e6ffe6;
+  color: #006600;
+  border-radius: 8px;
+}
+
+.respuesta-admin.rechazo {
+  background: #ffe6e6;
+  color: #b30000;
+}

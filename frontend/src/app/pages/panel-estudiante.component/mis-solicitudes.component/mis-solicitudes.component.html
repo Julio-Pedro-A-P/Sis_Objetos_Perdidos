@@ -1,0 +1,51 @@
+<div class="contenedor-solicitudes">
+
+  <!-- 🟦 Si no hay solicitudes -->
+  <div *ngIf="solicitudes.length === 0" class="no-solicitudes">
+    No tienes solicitudes registradas todavía.
+  </div>
+
+  <!-- 🟩 Listado de solicitudes -->
+  <div *ngFor="let sol of solicitudes" class="solicitud-card">
+
+    <div class="sol-header">
+      <h3>{{ sol.objeto.nombre }}</h3>
+
+      <span class="estado"
+            [ngClass]="{
+              'pendiente': sol.estado === 'PENDIENTE',
+              'validado': sol.estado === 'VALIDADO',
+              'rechazado': sol.estado === 'RECHAZADO'
+            }">
+        {{ sol.estado }}
+      </span>
+    </div>
+
+    <p class="detalle"><strong>Color / Marca:</strong> {{ sol.colorMarca }}</p>
+    <p class="detalle"><strong>Lugar donde lo perdiste:</strong> {{ sol.lugarPerdida }}</p>
+    <p class="detalle"><strong>Fecha de pérdida:</strong> {{ sol.fechaPerdida }}</p>
+
+    <hr>
+
+    <h4>Detalles del Objeto</h4>
+    <p><strong>Categoría:</strong> {{ sol.objeto.categoria }}</p>
+    <p><strong>Descripción:</strong> {{ sol.objeto.descripcion }}</p>
+
+    <!-- Galería de fotos -->
+    <div class="fotos">
+      <img *ngFor="let f of sol.objeto.fotos"
+           [src]="'http://localhost:8080/uploads/' + f.url"
+           alt="foto objeto"/>
+    </div>
+
+    <!-- Mensaje admin si está validado -->
+    <div *ngIf="sol.estado === 'VALIDADO'" class="respuesta-admin">
+      ✅ El administrador ha validado tu solicitud.
+    </div>
+
+    <div *ngIf="sol.estado === 'RECHAZADO'" class="respuesta-admin rechazo">
+      ❌ Tu solicitud fue rechazada por el administrador.
+    </div>
+
+  </div>
+</div>

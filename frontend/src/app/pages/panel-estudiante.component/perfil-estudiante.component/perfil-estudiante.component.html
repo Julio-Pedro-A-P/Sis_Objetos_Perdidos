@@ -1,0 +1,46 @@
+<div class="perfil-section" *ngIf="perfil; else cargando">
+  <div class="perfil-card">
+
+    <!-- ENCABEZADO -->
+    <div class="perfil-header">
+      <img
+        src="https://cdn-icons-png.flaticon.com/512/4140/4140048.png"
+        alt="Perfil"
+        class="perfil-avatar"
+      />
+
+      <div class="perfil-info">
+        <h2 class="perfil-nombre">{{ perfil.nombreUsuario | titlecase }}</h2>
+        <p class="perfil-subtitulo">
+          Estudiante de {{ perfil.facultad }}
+        </p>
+      </div>
+    </div>
+
+    <!-- INFORMACIÓN DEL ESTUDIANTE -->
+    <div class="perfil-body">
+      <div class="perfil-columna">
+        <p><strong>Código de estudiante:</strong> {{ perfil.codigo }}</p>
+        <p><strong>Facultad:</strong> {{ perfil.facultad }}</p></div>
+      <div class="perfil-columna">
+        <p><strong>Correo institucional:</strong> {{ perfil.correoInstitucional }}</p>
+        <p><strong>Teléfono:</strong> {{ perfil.telefono }}</p>
+      </div>
+
+    </div>
+
+    <hr class="perfil-divider" />
+
+    <!-- HISTORIAL DE OBJETOS RECLAMADOS -->
+    <div class="perfil-historial">
+      <h3>📦 Historial de objetos reclamados</h3>
+
+    </div>
+
+  </div>
+</div>
+
+<!-- LOADING TEMPLATE -->
+<ng-template #cargando>
+  <div class="perfil-loading">Cargando perfil...</div>
+</ng-template>

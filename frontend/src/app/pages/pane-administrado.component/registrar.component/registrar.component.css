@@ -1,0 +1,358 @@
+/* ============================
+      LAYOUT GLOBAL
+=============================== */
+.grid {
+  display: grid;
+  grid-template-columns: 1.35fr 1.15fr;
+  gap: 38px;
+  margin: 0 auto;
+  padding: 20px 60px;
+  max-width: 1400px;
+}
+
+/* ============================
+      TARJETAS
+=============================== */
+.card {
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 28px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0px 3px 12px rgba(0, 0, 0, 0.05);
+}
+
+.card h2 {
+  margin: 0;
+  font-size: 19px;
+  font-weight: 700;
+  color: #1e293b;
+}
+
+.muted {
+  margin-top: 3px;
+  font-size: 14px;
+  color: #6b7280;
+}
+
+/* ============================
+      FORMULARIO
+=============================== */
+label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1e293b;
+  display: block;
+  margin-bottom: 6px;
+}
+
+/* Inputs estilo prototipo */
+input,
+textarea,
+select {
+  width: 100%;
+  background: #f9fafb;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 12px 14px;
+  margin-bottom: 18px;
+  font-size: 14px;
+  transition: all 0.2s ease-in-out;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #9ca3af;
+}
+/* === Estilo unificado para inputs, textarea y select === */
+.form-card input,
+.form-card textarea,
+.form-card select {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+  background-color: #f9fafb;
+  font-size: 14px;
+  outline: none;
+  margin-bottom: 10px;
+  transition: 0.2s border-color ease;
+}
+
+.form-card input:focus,
+.form-card textarea:focus,
+.form-card select:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 2px rgba(0, 46, 109, 0.15);
+}
+
+/* === Ajuste fino del select (para que la flecha no se sobreponga) === */
+.form-card select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M1 1.5L6 6.5L11 1.5' stroke='%2364768b' stroke-width='2' stroke-linecap='round'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: calc(100% - 14px) center;
+  background-size: 12px;
+}
+/* Unificar inputs, textarea, select */
+.form-card input,
+.form-card textarea,
+.form-card select {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid #d0d7e0;
+  background-color: #f9fafb;
+  font-size: 14px;
+  margin-bottom: 14px;
+  transition: 0.2s;
+  appearance: none;
+  outline: none;
+}
+
+/* SOLUCIÓN: Centrar texto verticalmente */
+.form-card select {
+  line-height: 1.5rem !important;
+  height: 44px !important;
+  display: flex;
+  align-items: center;
+}
+
+/* Flecha personalizada */
+.form-card select {
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M1 1.5L6 6.5L11 1.5' stroke='%23333' stroke-width='2' stroke-linecap='round'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  background: #ffffff;
+  border-color: #0b3a66;
+  box-shadow: 0 0 0 2px rgba(0, 61, 138, 0.18);
+}
+
+/* ============================
+      UPLOAD BOX
+=============================== */
+.upload-box {
+  border: 2px dashed #d1d5db;
+  border-radius: 14px;
+  padding: 32px;
+  background-color: #fafafa;
+  text-align: center;
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+.upload-box:hover {
+  background-color: #f3f7ff;
+  border-color: #0b3a66;
+}
+
+.upload-icon {
+  font-size: 34px;
+  margin-bottom: 10px;
+  color: #0b3a66;
+}
+
+.upload-content p {
+  color: #6b7280;
+  font-size: 14px;
+}
+
+.upload-count {
+  margin-top: 6px;
+  font-size: 13px;
+  color: #0b3a66;
+  font-weight: 600;
+}
+
+/* ============================
+      BOTONES
+=============================== */
+.btn {
+  cursor: pointer;
+  border: none;
+  padding: 13px 18px;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 600;
+  transition: 0.25s;
+}
+
+.full {
+  width: 100%;
+}
+
+/* Botón amarillo prototipo */
+.btn-primary {
+  background-color: #e6c75f;
+  color: #111827;
+}
+
+.btn-primary:hover {
+  background-color: #d6b652;
+}
+
+/* Botón secundario */
+.btn-secondary {
+  background-color: #f3f4f6;
+  color: #111827;
+}
+
+.btn-secondary:hover {
+  background-color: #e5e7eb;
+}
+
+/* ============================
+      PREVIEW DE IMÁGENES
+=============================== */
+.preview {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.preview img {
+  width: 90px;
+  height: 90px;
+  border-radius: 12px;
+  object-fit: cover;
+  border: 1px solid #e5e7eb;
+}
+
+/* ============================
+      OBJETOS ACTIVOS
+=============================== */
+.object-card {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 18px;
+  border: 1px solid #e5e7eb;
+  margin-bottom: 14px;
+  display: flex;
+  justify-content: space-between;
+  box-shadow: 0px 3px 8px rgba(0,0,0,0.04);
+}
+
+.object-card h3 {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 700;
+  color: #1e293b;
+}
+
+.object-card p {
+  margin: 4px 0 8px;
+  color: #4b5563;
+}
+
+/* Tags estilo prototipo */
+.tags {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+.tag {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 12px;
+  background: #eef2f6;
+  border-radius: 999px;
+  color: #374151;
+}
+
+.tag.categoria {
+  background: #e0e7ff;
+  color: #4338ca;
+}
+
+/* Estado “Activo” */
+.status {
+  background: #22c55e;
+  color: white;
+  padding: 5px 14px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+/* Botón editar */
+.btn-edit {
+  margin-top: 6px;
+  background: #f0f7ff;
+  border: 1px solid #dbeafe;
+  color: #0b3a66;
+  padding: 6px 14px;
+  border-radius: 10px;
+  font-size: 13px;
+}
+
+.btn-edit:hover {
+  background: #bedbfe;
+}
+
+/* Imágenes del objeto */
+.imagenes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.imagenes img {
+  width: 115px;
+  height: 115px;
+  object-fit: cover;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+}
+
+/* Mensaje sin datos */
+.no-data {
+  padding: 25px;
+  text-align: center;
+  color: #6b7280;
+}
+/* CONTENEDOR SCROLLEABLE – SOLO MUESTRA 1 FILA (3 IMÁGENES) */
+.imagenes-grid-scroll {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+
+  max-height: 150px;
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  padding-right: 5px;
+}
+
+/* MINIATURAS */
+.img-item {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+/* ESTILOS DEL SCROLL */
+.imagenes-grid-scroll::-webkit-scrollbar {
+  width: 7px;
+}
+
+.imagenes-grid-scroll::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+
+.imagenes-grid-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
