@@ -49,28 +49,27 @@ Este sistema permite registrar objetos encontrados en el campus, gestionarlos de
 - Nombre cargado desde `localStorage` luego del login
 
 ---
+## 📡 Endpoints Principales
 
-## 📁 Estructura del Proyecto
+### 🔐 Autenticación
+POST /api/auth/login  
+POST /api/auth/registrar  
 
-Sis_Objetos_Perdidos/
-│── backend/ # API REST – Spring Boot
-│ ├── controller/
-│ ├── service/
-│ ├── repository/
-│ ├── entity/
-│ ├── dto/
-│ ├── enums/
-│ └── security/
-│
-└── frontend/ # Angular 20
-├── src/app/
-│ ├── pages/
-│ ├── services/
-│ ├── guards/
-│ └── interceptors/
-└── environments/
+### 🎒 Objetos
+GET /api/objetos/listar  
+POST /api/objetos/registrar  
+PUT /api/objetos/actualizar/{id}  
 
----
+### 🧍 Estudiantes
+GET /api/estudiantes/datos/{usuarioId}  
+PUT /api/estudiantes/completar  
+
+### 📄 Solicitudes
+POST /api/solicitudes/crear  
+GET /api/solicitudes/estudiante/{id}  
+PUT /api/solicitudes/aprobar/{id}  
+PUT /api/solicitudes/rechazar/{id}
+
 
 ## ⚙️ Instalación del Proyecto
 
@@ -78,4 +77,5 @@ Sis_Objetos_Perdidos/
 ```bash
 git clone https://github.com/Julio-Pedro-A-P/Sis_Objetos_Perdidos.git
 cd Sis_Objetos_Perdidos
+ 
 
